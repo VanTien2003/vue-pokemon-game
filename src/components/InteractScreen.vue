@@ -16,6 +16,7 @@
         :imgBackFaceUrl="`images/${card}.png`"
         :card="{ index, value: card }"
         :cardsContext="cardsContext"
+        :rules="rules"
         @onFlip="checkRule($event)"
       />
     </div>
@@ -44,8 +45,17 @@ export default {
   },
   methods: {
     checkRule(card) {
-      if (this.rules.length === 2) return false;
+      if (this.rules.length === 2) {
+        return false;
+      }
       this.rules.push(card);
+
+      if (this.rules.length === 1) {
+        this.$refs[`card-${this.rules[0].index}`][0].onEnabledDisableMode();
+        // return;
+      } else {
+        this.$refs[`card-${this.rules[0].index}`][0].onCancelDisableMode();
+      }
 
       if (
         this.rules.length === 2 &&
@@ -91,10 +101,10 @@ export default {
 .screen {
   width: 100%;
   height: 100vh;
-  position: absolute;
+  /* position: absolute;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 2; */
   background-color: var(--dark);
   color: var(--light);
 }

@@ -56,6 +56,12 @@ export default {
         return [];
       },
     },
+    rules: {
+      type: Array,
+      default: function () {
+        return [];
+      },
+    },
   },
   data() {
     return {
@@ -65,15 +71,25 @@ export default {
   },
   methods: {
     onToggleFlipCard() {
-      if (this.isDisabled) return false;
+      if (this.rules.length === 2) {
+        return;
+      }
+      if (this.isDisabled) {
+        return false;
+      }
       this.isFlipped = !this.isFlipped;
-      if (this.isFlipped) this.$emit("onFlip", this.card);
+      if (this.isFlipped) {
+        this.$emit("onFlip", this.card);
+      }
     },
     onFlipBackCard() {
       this.isFlipped = false;
     },
     onEnabledDisableMode() {
       this.isDisabled = true;
+    },
+    onCancelDisableMode() {
+      this.isDisabled = false;
     },
   },
 };

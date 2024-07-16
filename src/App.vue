@@ -46,7 +46,6 @@ export default {
 
   methods: {
     onHandleBeforeStart(config) {
-      console.log("running handle before start, ", config);
       this.settings.totalBlocks = config.totalBlocks;
 
       const firstCards = Array.from(

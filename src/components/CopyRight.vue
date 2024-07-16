@@ -1,5 +1,5 @@
 <template>
-  <div class="coppyright">
+  <div class="copyright">
     <p>
       This game owned by Van Tien in Vue 3 -
       <a href="#">view here</a>
@@ -14,6 +14,7 @@
   transform: translateX(-50%);
   bottom: 1.5rem;
   color: var(--light);
+  background-color: var(--dark);
   z-index: 3;
   font-size: 1.5rem;
 }
