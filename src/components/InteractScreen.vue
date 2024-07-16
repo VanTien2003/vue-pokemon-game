@@ -52,8 +52,7 @@ export default {
 
       if (this.rules.length === 1) {
         this.$refs[`card-${this.rules[0].index}`][0].onEnabledDisableMode();
-        // return;
-      } else {
+      } else if (this.rules.length === 2) {
         this.$refs[`card-${this.rules[0].index}`][0].onCancelDisableMode();
       }
 
@@ -73,7 +72,7 @@ export default {
         );
         if (
           disabledElements &&
-          disabledElements.length === this.cardsContext.length - 2
+          disabledElements.length === this.cardsContext.length - 1
         ) {
           setTimeout(() => {
             this.$emit("onFinish");
